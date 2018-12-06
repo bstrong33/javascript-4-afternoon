@@ -23,7 +23,8 @@ function outer() {
 */
   
 // Code Here
-
+let inner = outer();
+inner();
 
 
 //Once you do that, invoke inner.
@@ -52,6 +53,8 @@ function callFriend(name) {
 */
 
 //Code Here
+let callJake = callFriend('Jake');
+callFriend('435-555-9248');
 
 
 
@@ -62,7 +65,11 @@ function callFriend(name) {
 */
 
 //Code Here
-
+let makeCounter = (num=0) => {
+  return function() {
+    return ++num;
+  }
+}
 
 
 //Uncomment this once you make your function
@@ -89,7 +96,12 @@ function counterFactory(value) {
   // Code here.
 
   return {
-
+    inc: function(){
+      return ++value
+    },
+    dec: function(){
+      return --value
+    }
   };
 }
 
@@ -113,6 +125,9 @@ function motivation( firstname, lastname ) {
   var welcomeText = "You're doing awesome, keep it up";
 
   // code message function here.
+  return function message(){
+    return `${welcomeText} ${firstname} ${lastname}.`
+  }
 
   //Uncommment this to return the value of your message function
   //return message;
@@ -144,6 +159,9 @@ var module = (function() {
   // outside our lexical scope
   return {
     // Code here.
+    publicMethod: function(){
+      return privateMethod()
+    }
   };
 })();
 
@@ -163,6 +181,14 @@ function secretNumber() {
 
   return {
     // Code here
+    addToSecret: function(num){
+      secret+=num
+      return secret;
+    },
+    takeAwayFromSecret: function(num){
+      secret-=num
+      return secret;
+    }
   };
 }
 
@@ -187,10 +213,10 @@ function secretNumber() {
 */
 
 function timeOutCounter() {
-  for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
+  for (let i = 0; i <= 5; i++) {
+    setTimeout(function () {
       console.log(i);
     }, i * 1000);
   }
-}
-timeOutCounter();
+ }
+ timeOutCounter();
